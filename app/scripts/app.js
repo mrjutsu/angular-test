@@ -13,7 +13,8 @@ angular
     'ngCookies',
     'ngResource',
     'ngRoute',
-    'ngSanitize'
+    'ngSanitize',
+    'ng-token-auth'
   ])
   .config(function ($routeProvider) {
     $routeProvider
