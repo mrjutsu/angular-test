@@ -16,7 +16,10 @@ angular
     'ngSanitize',
     'ng-token-auth'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider,$authProvider) {
+    $authProvider.configure({
+      apiUrl: 'http://localhost:3000'
+    });
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
