@@ -22,14 +22,24 @@ angular
     });
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl',
-        controllerAs: 'main'
+        templateUrl: 'views/dashboard.html',
+        controller: 'DashboardCtrl',
+        controllerAs: 'dashboard'
       })
       .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
+      })
+      .when('/sign_up', {
+        templateUrl: 'views/sign_up.html',
+        controller: 'RegistrationsCtrl',
+        controllerAs: 'signUp'
+      })
+      .when('/sign_in', {
+        templateUrl: 'views/sign_in.html',
+        controller: 'SessionsCtrl',
+        controllerAs: 'signIn'
       })
       .otherwise({
         redirectTo: '/'

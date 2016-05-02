@@ -2,27 +2,13 @@
 
 /**
  * @ngdoc function
- * @name angularTestApp.controller:MainCtrl
+ * @name angularTestApp.controller:SessionsCtrl
  * @description
- * # MainCtrl
+ * # SessionsCtrl
  * Controller of the angularTestApp
  */
 angular.module('angularTestApp')
-  .controller('MainCtrl', function ($scope,$auth) {
-    $scope.handleRegBtnClick = function() {
-      $auth.submitRegistration($scope.registrationForm)
-        .then(function(resp) {
-          // handle success response
-          console.log("eeexitooooo");
-          console.log(resp);
-        })
-        .catch(function(resp) {
-          console.log("paila");
-          console.log(resp);
-          // handle error response
-        });
-    };
-
+  .controller('SessionsCtrl', function ($scope,$auth) {
     $scope.handleLoginBtnClick = function() {
       $auth.submitLogin($scope.loginForm)
         .then(function(resp) {
@@ -35,6 +21,16 @@ angular.module('angularTestApp')
         });
     };
 
-    console.log( $auth.validateUser() );
 
+    $scope.handleSignOutBtnClick = function() {
+      $auth.signOut()
+        .then(function(resp) {
+          console.log(resp);
+          // handle success response
+        })
+        .catch(function(resp) {
+          console.log(resp);
+          // handle error response
+        });
+    };
   });
