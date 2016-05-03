@@ -47,7 +47,7 @@ angular
         redirectTo: '/'
       });
   })
-  .run(function($rootScope,$auth){
+  .run(function($rootScope,$auth,$location){
 
     $auth.validateUser();
 
@@ -56,17 +56,18 @@ angular
       console.log(user);
       $rootScope.$broadcast('signed_in',true);
     });
-
     $rootScope.$on('auth:validation-error', function (ev, error) {
       console.log('errooooor');
       console.log(error);
       $rootScope.$broadcast('signed_in',false);
+      $location.path('/');
     });
 
     $rootScope.$on('auth:session-expired', function (ev, data) {
       console.log('expirado');
       console.log(data);
       $rootScope.$broadcast('signed_in',false);
+      $location.path('/');
     });
 
     $rootScope.$on('auth:email-confirmation-success', function (ev, data) {
@@ -74,11 +75,11 @@ angular
       console.log(data);
       $rootScope.$broadcast('signed_in',true);
     });
-
     $rootScope.$on('auth:email-confirmation-error', function (ev, data) {
       console.log('no confirmado');
       console.log(data);
       $rootScope.$broadcast('signed_in',false);
+      $location.path('/');
     });
 
     $rootScope.$on('auth:password-reset-confirm-success', function (ev, data) {
@@ -86,11 +87,38 @@ angular
       console.log(data);
       $rootScope.$broadcast('signed_in',true);
     });
-
     $rootScope.$on('auth:password-reset-confirm-error', function (ev, data) {
       console.log('fallo reseteo de pw');
       console.log(data);
       $rootScope.$broadcast('signed_in',false);
+      $location.path('/');
+    });
+
+    $rootScope.$on('auth:logout-success', function (ev, data) {
+      console.log('sesion cerrada');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',false);
+      $location.path('/');
+    });
+
+    $rootScope.$on('auth:login-success', function (ev, data) {
+      console.log('sesion iniciada');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',true);
+      $location.path('/');
+    });
+
+    $rootScope.$on('auth:registration-email-success', function (ev, data) {
+      console.log('registrado con exito');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',false);
+      $location.path('/');
+    });
+    $rootScope.$on('auth:registration-email-error', function (ev, data) {
+      console.log('error en registro');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',false);
+      $location.path('/');
     });
 
   });

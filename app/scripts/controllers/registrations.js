@@ -8,15 +8,14 @@
  * Controller of the angularTestApp
  */
 angular.module('angularTestApp')
-  .controller('RegistrationsCtrl', function ($scope,$auth) {
+  .controller('RegistrationsCtrl', function ($scope,$auth,$location) {
     $scope.handleRegBtnClick = function() {
       $auth.submitRegistration($scope.registrationForm)
-        .then(function(resp) {
+        .then(function() {
+          $location.path('/');
           // handle success response
-          console.log(resp);
         })
-        .catch(function(resp) {
-          console.log(resp);
+        .catch(function() {
           // handle error response
         });
     };

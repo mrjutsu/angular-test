@@ -1,5 +1,5 @@
 <h2>iniciar sesion</h2>
-<form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}">
+<form ng-submit="submitLogin(loginForm)" role="form" ng-init="loginForm = {}" ng-controller="SessionsCtrl">
   <div class="form-group">
     <label>email</label>
     <input type="email" name="email" ng-model="loginForm.email" required="required" class="form-control"/>
