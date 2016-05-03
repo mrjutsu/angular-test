@@ -33,4 +33,14 @@ angular.module('angularTestApp')
           // handle error response
         });
     };
+
+    $scope.signOut = function() {
+      $auth.signOut()
+        .then(function(resp) {
+          // handle success response
+        })
+        .catch(function(resp) {
+          // handle error response
+        });
+    };
   });

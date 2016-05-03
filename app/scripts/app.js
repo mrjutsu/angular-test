@@ -18,8 +18,10 @@ angular
   ])
   .config(function ($routeProvider,$authProvider) {
     $authProvider.configure({
-      apiUrl: 'http://localhost:3000'
+      apiUrl: 'http://localhost:3000',
+      validateOnPageLoad: false
     });
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/dashboard.html',
@@ -44,4 +46,51 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+  })
+  .run(function($rootScope,$auth){
+
+    $auth.validateUser();
+
+    $rootScope.$on('auth:validation-success', function (ev, user) {
+      console.log('autenticado');
+      console.log(user);
+      $rootScope.$broadcast('signed_in',true);
+    });
+
+    $rootScope.$on('auth:validation-error', function (ev, error) {
+      console.log('errooooor');
+      console.log(error);
+      $rootScope.$broadcast('signed_in',false);
+    });
+
+    $rootScope.$on('auth:session-expired', function (ev, data) {
+      console.log('expirado');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',false);
+    });
+
+    $rootScope.$on('auth:email-confirmation-success', function (ev, data) {
+      console.log('confirmado');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',true);
+    });
+
+    $rootScope.$on('auth:email-confirmation-error', function (ev, data) {
+      console.log('no confirmado');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',false);
+    });
+
+    $rootScope.$on('auth:password-reset-confirm-success', function (ev, data) {
+      console.log('pw reseteado');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',true);
+    });
+
+    $rootScope.$on('auth:password-reset-confirm-error', function (ev, data) {
+      console.log('fallo reseteo de pw');
+      console.log(data);
+      $rootScope.$broadcast('signed_in',false);
+    });
+
   });
