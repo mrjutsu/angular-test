@@ -15,7 +15,6 @@ angular.module('angularTestApp')
           $rootScope.$broadcast('signed_in',true);
         })
         .catch(function() {
-          // alert('login fallo');
         });
     };
 
@@ -25,7 +24,6 @@ angular.module('angularTestApp')
           $rootScope.$broadcast('signed_in',false);
         })
         .catch(function() {
-          // alert('hubo un error al cerrar sesion');
         });
     };
   });

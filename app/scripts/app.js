@@ -18,8 +18,8 @@ angular
   ])
   .config(function ($routeProvider,$authProvider) {
     $authProvider.configure({
-      apiUrl: 'http://localhost:3000',
-      validateOnPageLoad: false
+      apiUrl: 'http://localhost:3000'
+      // validateOnPageLoad: false
     });
 
     $routeProvider
@@ -49,7 +49,7 @@ angular
   })
   .run(function($rootScope,$auth,$location){
 
-    $auth.validateUser();
+    // $auth.validateUser();
 
     $rootScope.$on('auth:validation-success', function (ev, user) {
       console.log('autenticado');

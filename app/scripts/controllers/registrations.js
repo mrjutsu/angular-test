@@ -13,10 +13,8 @@ angular.module('angularTestApp')
       $auth.submitRegistration($scope.registrationForm)
         .then(function() {
           $location.path('/');
-          // handle success response
         })
         .catch(function() {
-          // handle error response
         });
     };
   });
