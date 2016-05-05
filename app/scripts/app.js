@@ -43,6 +43,11 @@ angular
         controller: 'SessionsCtrl',
         controllerAs: 'signIn'
       })
+      .when('/posts', {
+        templateUrl: 'views/posts.html',
+        controller: 'PostsCtrl',
+        controllerAs: 'posts'
+      })
       .otherwise({
         redirectTo: '/'
       });

@@ -8,7 +8,7 @@
  * Controller of the angularTestApp
  */
 angular.module('angularTestApp')
-  .controller('DashboardCtrl', function ($auth,$scope) {
+  .controller('DashboardCtrl', [ '$auth', '$scope', function ($auth,$scope) {
 
     $scope.SignedIn = false;
 
@@ -16,4 +16,4 @@ angular.module('angularTestApp')
       $scope.SignedIn = data;
     });
 
-  });
+  }]);

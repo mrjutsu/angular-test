@@ -8,7 +8,7 @@
  * Controller of the angularTestApp
  */
 angular.module('angularTestApp')
-  .controller('SessionsCtrl', function ($scope,$auth,$rootScope) {
+  .controller('SessionsCtrl', [ '$scope', '$auth', '$rootScope', function ($scope,$auth,$rootScope) {
     $scope.handleLoginBtnClick = function() {
       $auth.submitLogin($scope.loginForm)
         .then(function() {
@@ -26,4 +26,4 @@ angular.module('angularTestApp')
         .catch(function() {
         });
     };
-  });
+  }]);

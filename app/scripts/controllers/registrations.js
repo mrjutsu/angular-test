@@ -8,7 +8,7 @@
  * Controller of the angularTestApp
  */
 angular.module('angularTestApp')
-  .controller('RegistrationsCtrl', function ($scope,$auth,$location) {
+  .controller('RegistrationsCtrl', [ '$scope', '$auth', '$location', function ($scope,$auth,$location) {
     $scope.handleRegBtnClick = function() {
       $auth.submitRegistration($scope.registrationForm)
         .then(function() {
@@ -17,4 +17,4 @@ angular.module('angularTestApp')
         .catch(function() {
         });
     };
-  });
+  }]);
