@@ -1,1 +1,6 @@
-<p>This is the posts view.</p>
+<article ng-repeat="post in posts" class="">
+  <h2>{{ post.name }}</h2>
+  <!-- <p>{{ post.user }}</p> -->
+  <p>{{ post.post_body }}</p>
+  <p>{{ post.slug }}</p>
+</article>

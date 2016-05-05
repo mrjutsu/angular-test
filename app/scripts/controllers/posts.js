@@ -8,6 +8,9 @@
  * Controller of the angularTestApp
  */
 angular.module('angularTestApp')
-  .controller('PostsCtrl', [  function () {
-
+  .controller('PostsCtrl', [ 'apiService', '$q', '$scope', function (apiService,$q,$scope) {
+    $scope.posts = apiService.allPosts()
+      .then( function(posts){
+        $scope.posts = posts.data;
+      } );
   }]);
